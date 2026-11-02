@@ -1,0 +1,636 @@
+[
+  {
+    "mode": "monolithic",
+    "kind": "simulation",
+    "run": "20261102-data-path-monolithic-validation",
+    "status": "completed",
+    "control": "coordinated",
+    "profile": "200_weekdays_8_17",
+    "completed_cycles": 6,
+    "seed": 42,
+    "simulated_end_seconds": 3600.0,
+    "gui": false,
+    "gui_delay": 0,
+    "replicas": false,
+    "integrated": true,
+    "control_protocol_version": 2,
+    "grafana_probe": "datasource query",
+    "fiware_tenant": "gw_sim_e480940aa90c4c4698575936",
+    "step_seconds": 600,
+    "source_start": "2025-01-02T07:00:00Z",
+    "operation_wall_seconds": 22.323783273000117,
+    "pacing": null,
+    "scenario": "/home/manfr/PycharmProjects/BoMoDT-Federated/scenarios/20261102-140047-monolithic-068fd1",
+    "source_periods": [],
+    "source_sha256": null,
+    "network_sha256": "7227c51be1423d9f858256a020290f8887b4d32fafb1e7e34f3b79321d137964",
+    "network_hash_source": "captured simulation network",
+    "routes_sha256": "bab532396a212f717e7eabf8c88685de6c18240de29a61a4682ed91421ffe3a7",
+    "collector_errors": [],
+    "dashboard_included": false,
+    "notes": [
+      "Application RSS and container memory are separate scopes; do not add them blindly.",
+      "Plots use CPU cores (1 = one fully occupied logical CPU). Raw cpu_percent retains the 100%-per-core convention; sampled estimates can miss short processes.",
+      "Source playback time is included in pacing lateness, not in IoT HTTP latency.",
+      "Plot generation is performed after resource capture.",
+      "FIWARE publish-to-read timings include HTTP, broker processing and polling, not pure network propagation.",
+      "Docker network totals count container interfaces, including both endpoints of internal transfers.",
+      "Whole-operation process capture includes startup, provisioning, physics, control and teardown when available.",
+      "Accounted CPU sums disjoint application/container scopes; Docker daemon, kernel and unrelated processes are excluded. Container CPU seconds are sampled estimates."
+    ],
+    "latency_ms": {
+      "local_observation_broker_read_ms": {
+        "count": 66,
+        "mean": 1.0247538333333335,
+        "p50": 1.025942,
+        "p95": 1.194331,
+        "p99": 1.312579,
+        "max": 1.400282
+      },
+      "local_coordination_broker_read_ms": {
+        "count": 66,
+        "mean": 0.8858862878787879,
+        "p50": 0.889597,
+        "p95": 0.967514,
+        "p99": 0.988632,
+        "max": 1.144769
+      },
+      "command_iot_accept_ms": {
+        "count": 66,
+        "mean": 5.473846515151514,
+        "p50": 4.925118,
+        "p95": 9.398329,
+        "p99": 10.387932,
+        "max": 10.647878
+      },
+      "observation_iot_accept_ms": {
+        "count": 94,
+        "mean": 32.27466042553191,
+        "p50": 19.159773,
+        "p95": 128.886356,
+        "p99": 131.204723,
+        "max": 131.479717
+      },
+      "world_observation_broker_read_ms": {
+        "count": 94,
+        "mean": 1.4548657765957442,
+        "p50": 1.343432,
+        "p95": 2.141122,
+        "p99": 2.81151,
+        "max": 2.900571
+      },
+      "observation_publish_to_read_ms": {
+        "count": 77,
+        "mean": 38.31450192207792,
+        "p50": 21.991458,
+        "p95": 131.31355,
+        "p99": 132.402238,
+        "max": 133.249025
+      },
+      "observation_to_grafana_query_ms": {
+        "count": 77,
+        "mean": 177.6402133896104,
+        "p50": 37.543053,
+        "p95": 600.203444,
+        "p99": 601.023865,
+        "max": 854.077081
+      },
+      "coordination_iot_accept_ms": {
+        "count": 79,
+        "mean": 21.681517873417718,
+        "p50": 19.44161,
+        "p95": 39.115657,
+        "p99": 39.582241,
+        "max": 39.810072
+      },
+      "world_coordination_broker_read_ms": {
+        "count": 79,
+        "mean": 1.2825570506329114,
+        "p50": 1.128998,
+        "p95": 2.200086,
+        "p99": 2.52584,
+        "max": 2.857915
+      },
+      "coordination_publish_to_read_ms": {
+        "count": 66,
+        "mean": 25.29660531818181,
+        "p50": 22.7091,
+        "p95": 40.571266,
+        "p99": 40.815161,
+        "max": 40.927405
+      },
+      "world_command_broker_read_ms": {
+        "count": 66,
+        "mean": 1.7310106515151518,
+        "p50": 1.7262,
+        "p95": 2.240956,
+        "p99": 2.45724,
+        "max": 2.923072
+      },
+      "command_to_readback_ms": {
+        "count": 66,
+        "mean": 67.57799462121214,
+        "p50": 65.880636,
+        "p95": 114.610574,
+        "p99": 125.956768,
+        "max": 140.033157
+      },
+      "persisted_observation_to_actuation_ms": {
+        "count": 66,
+        "mean": 280.91996366666694,
+        "p50": 186.472214,
+        "p95": 456.276308,
+        "p99": 700.059077,
+        "max": 700.059077
+      },
+      "observation_to_actuation_ms": {
+        "count": 66,
+        "mean": 440.75241483333355,
+        "p50": 222.052797,
+        "p95": 1071.512028,
+        "p99": 1071.512028,
+        "max": 1071.512028
+      },
+      "feedback_iot_accept_ms": {
+        "count": 76,
+        "mean": 21.54889263157894,
+        "p50": 19.944376,
+        "p95": 37.591466,
+        "p99": 38.852391,
+        "max": 38.893551
+      },
+      "world_feedback_broker_read_ms": {
+        "count": 76,
+        "mean": 1.3362291184210524,
+        "p50": 1.255302,
+        "p95": 1.881649,
+        "p99": 2.374212,
+        "max": 2.656878
+      },
+      "feedback_publish_to_read_ms": {
+        "count": 66,
+        "mean": 24.557181409090916,
+        "p50": 22.67055,
+        "p95": 40.033973,
+        "p99": 40.296391,
+        "max": 40.515202
+      },
+      "observation_history_barrier_ms": {
+        "count": 6,
+        "mean": 213.81255899999996,
+        "p50": 66.241473,
+        "p95": 552.907482,
+        "p99": 552.907482,
+        "max": 552.907482
+      },
+      "control_history_barrier_ms": {
+        "count": 7,
+        "mean": 317.6335127142857,
+        "p50": 319.003675,
+        "p95": 560.451428,
+        "p99": 560.451428,
+        "max": 560.451428
+      },
+      "control_closed_loop_ms": {
+        "count": 6,
+        "mean": 757.0211051666666,
+        "p50": 754.721005,
+        "p95": 1247.171165,
+        "p99": 1247.171165,
+        "max": 1247.171165
+      },
+      "physics_advance_ms": {
+        "count": 6,
+        "mean": 1306.0500396666666,
+        "p50": 1386.667472,
+        "p95": 1452.968086,
+        "p99": 1452.968086,
+        "max": 1452.968086
+      },
+      "coordinator_ms": {
+        "count": 6,
+        "mean": 1.0350311666666665,
+        "p50": 0.942722,
+        "p95": 1.4734,
+        "p99": 1.4734,
+        "max": 1.4734
+      },
+      "decision_barrier_ms": {
+        "count": 6,
+        "mean": 393.43094633333334,
+        "p50": 207.403101,
+        "p95": 869.279931,
+        "p99": 869.279931,
+        "max": 869.279931
+      },
+      "control_to_next_observation_ms": {
+        "count": 6,
+        "mean": 2930.0162020000002,
+        "p50": 2475.818509,
+        "p95": 5396.36512,
+        "p99": 5396.36512,
+        "max": 5396.36512
+      },
+      "simulation_ms": {
+        "count": 6,
+        "mean": 1306.0500396666666,
+        "p50": 1386.667472,
+        "p95": 1452.968086,
+        "p99": 1452.968086,
+        "max": 1452.968086
+      },
+      "cycle_ms": {
+        "count": 6,
+        "mean": 2930.019159,
+        "p50": 2475.821879,
+        "p95": 5396.367586,
+        "p99": 5396.367586,
+        "max": 5396.367586
+      },
+      "local_inference_ms": {
+        "count": 66,
+        "mean": 0.8662902424242425,
+        "p50": 0.848133,
+        "p95": 1.1191,
+        "p99": 1.170594,
+        "max": 1.359518
+      },
+      "actuator_readback_ms": {
+        "count": 150,
+        "mean": 0.26061491333333325,
+        "p50": 0.204605,
+        "p95": 0.468633,
+        "p99": 0.698602,
+        "max": 0.703923
+      }
+    },
+    "grafana_probe_failures": [],
+    "resource_peaks": {
+      "application": {
+        "memory_mib": 1015.53515625,
+        "rss_mib": 1015.53515625,
+        "uss_mib": 951.68359375,
+        "cpu_percent": 872.9446721381597,
+        "cpu_cores": 8.729446721381597
+      },
+      "fiware": {
+        "memory_mib": 705.608,
+        "rss_mib": null,
+        "uss_mib": null,
+        "cpu_percent": 48.01,
+        "cpu_cores": 0.48009999999999997
+      }
+    },
+    "resource_sample_count": 91,
+    "control_transport": {
+      "logical_events": 275,
+      "publication_attempts": 315,
+      "encoded_http_body_bytes": 686296,
+      "note": "HTTP JSON body bytes include retries, but exclude HTTP headers, TCP/IP and responses."
+    },
+    "resource_totals": {
+      "application": {
+        "sampled_cpu_seconds": 11.269999999999987,
+        "sampled_wall_seconds": 22.127974059,
+        "read_bytes": 61440.0,
+        "write_bytes": 7876608.0
+      },
+      "fiware": {
+        "sampled_cpu_seconds": 4.129158330907799,
+        "sampled_wall_seconds": 20.264819181999997,
+        "network_rx_bytes": 11077710.0,
+        "network_tx_bytes": 15363064.0,
+        "block_read_bytes": 578000.0,
+        "block_write_bytes": 4403800.0
+      }
+    },
+    "accounted_cpu_seconds": 15.399158330907786,
+    "coverage": [
+      {
+        "plot": "Process roles",
+        "reason": "Some captured PIDs have no role metadata; grouped as runtime support, never guessed to be agents"
+      },
+      {
+        "plot": "Policy CPU",
+        "reason": "CPU-per-decision instrumentation was absent; wall time is still available"
+      }
+    ]
+  },
+  {
+    "mode": "federated",
+    "kind": "simulation",
+    "run": "20261102-data-path-latency-validation",
+    "status": "completed",
+    "control": "coordinated",
+    "profile": "200_weekdays_8_17",
+    "completed_cycles": 6,
+    "seed": 42,
+    "simulated_end_seconds": 3600.0,
+    "gui": false,
+    "gui_delay": 0,
+    "replicas": false,
+    "integrated": true,
+    "control_protocol_version": 2,
+    "grafana_probe": "datasource query",
+    "fiware_tenant": "gw_sim_04065d5970074e57b7651521",
+    "step_seconds": 600,
+    "source_start": "2025-01-02T07:00:00Z",
+    "operation_wall_seconds": 20.555380494999554,
+    "pacing": null,
+    "scenario": "/home/manfr/PycharmProjects/BoMoDT-Federated/scenarios/20261102-140047-monolithic-068fd1",
+    "source_periods": [],
+    "source_sha256": null,
+    "network_sha256": "7227c51be1423d9f858256a020290f8887b4d32fafb1e7e34f3b79321d137964",
+    "network_hash_source": "captured simulation network",
+    "routes_sha256": "bab532396a212f717e7eabf8c88685de6c18240de29a61a4682ed91421ffe3a7",
+    "collector_errors": [],
+    "dashboard_included": false,
+    "notes": [
+      "Application RSS and container memory are separate scopes; do not add them blindly.",
+      "Plots use CPU cores (1 = one fully occupied logical CPU). Raw cpu_percent retains the 100%-per-core convention; sampled estimates can miss short processes.",
+      "Source playback time is included in pacing lateness, not in IoT HTTP latency.",
+      "Plot generation is performed after resource capture.",
+      "FIWARE publish-to-read timings include HTTP, broker processing and polling, not pure network propagation.",
+      "Docker network totals count container interfaces, including both endpoints of internal transfers.",
+      "Whole-operation process capture includes startup, provisioning, physics, control and teardown when available.",
+      "Accounted CPU sums disjoint application/container scopes; Docker daemon, kernel and unrelated processes are excluded. Container CPU seconds are sampled estimates."
+    ],
+    "latency_ms": {
+      "local_observation_broker_read_ms": {
+        "count": 66,
+        "mean": 1.5207574090909084,
+        "p50": 1.205648,
+        "p95": 3.33697,
+        "p99": 3.473441,
+        "max": 3.584053
+      },
+      "local_coordination_broker_read_ms": {
+        "count": 66,
+        "mean": 0.9245525151515152,
+        "p50": 0.910412,
+        "p95": 1.123921,
+        "p99": 1.213798,
+        "max": 1.949427
+      },
+      "command_iot_accept_ms": {
+        "count": 66,
+        "mean": 7.275581045454542,
+        "p50": 6.70307,
+        "p95": 11.896234,
+        "p99": 12.206125,
+        "max": 12.354021
+      },
+      "observation_iot_accept_ms": {
+        "count": 77,
+        "mean": 10.280939727272727,
+        "p50": 7.790655,
+        "p95": 26.811425,
+        "p99": 28.54386,
+        "max": 28.629678
+      },
+      "world_observation_broker_read_ms": {
+        "count": 77,
+        "mean": 2.192556428571429,
+        "p50": 2.133234,
+        "p95": 3.318366,
+        "p99": 3.737579,
+        "max": 3.922439
+      },
+      "observation_publish_to_read_ms": {
+        "count": 77,
+        "mean": 14.063811714285709,
+        "p50": 11.79166,
+        "p95": 30.010711,
+        "p99": 30.839016,
+        "max": 30.857682
+      },
+      "coordination_iot_accept_ms": {
+        "count": 66,
+        "mean": 8.06301409090909,
+        "p50": 7.361716,
+        "p95": 13.382159,
+        "p99": 14.138272,
+        "max": 14.787692
+      },
+      "world_coordination_broker_read_ms": {
+        "count": 66,
+        "mean": 1.9605960909090907,
+        "p50": 1.92775,
+        "p95": 2.696881,
+        "p99": 2.984932,
+        "max": 3.233722
+      },
+      "coordination_publish_to_read_ms": {
+        "count": 66,
+        "mean": 11.312351893939395,
+        "p50": 10.832533,
+        "p95": 16.071072,
+        "p99": 16.733444,
+        "max": 17.255946
+      },
+      "world_command_broker_read_ms": {
+        "count": 66,
+        "mean": 1.8233902727272726,
+        "p50": 1.776378,
+        "p95": 2.333646,
+        "p99": 2.996799,
+        "max": 3.055182
+      },
+      "command_to_readback_ms": {
+        "count": 66,
+        "mean": 26.694239878787872,
+        "p50": 26.83875,
+        "p95": 31.532735,
+        "p99": 31.908815,
+        "max": 31.909584
+      },
+      "persisted_observation_to_actuation_ms": {
+        "count": 66,
+        "mean": 46.698712393939395,
+        "p50": 44.563812,
+        "p95": 57.124941,
+        "p99": 57.276646,
+        "max": 59.757172
+      },
+      "observation_to_actuation_ms": {
+        "count": 66,
+        "mean": 301.9977026666666,
+        "p50": 77.481404,
+        "p95": 1429.023629,
+        "p99": 1429.023629,
+        "max": 1429.023629
+      },
+      "feedback_iot_accept_ms": {
+        "count": 66,
+        "mean": 8.462221666666665,
+        "p50": 7.663977,
+        "p95": 15.985054,
+        "p99": 16.535924,
+        "max": 16.851728
+      },
+      "world_feedback_broker_read_ms": {
+        "count": 66,
+        "mean": 1.97808496969697,
+        "p50": 1.890666,
+        "p95": 2.767003,
+        "p99": 3.003482,
+        "max": 3.380845
+      },
+      "feedback_publish_to_read_ms": {
+        "count": 66,
+        "mean": 11.929629545454546,
+        "p50": 11.172974,
+        "p95": 18.375532,
+        "p99": 18.796301,
+        "max": 19.485534
+      },
+      "observation_to_grafana_query_ms": {
+        "count": 77,
+        "mean": 352.0720518571428,
+        "p50": 21.313154,
+        "p95": 2343.188887,
+        "p99": 2355.591133,
+        "max": 2371.112219
+      },
+      "observation_history_barrier_ms": {
+        "count": 6,
+        "mean": 21.384608166666666,
+        "p50": 14.669997,
+        "p95": 56.093849,
+        "p99": 56.093849,
+        "max": 56.093849
+      },
+      "control_history_barrier_ms": {
+        "count": 7,
+        "mean": 12.366924,
+        "p50": 12.206993,
+        "p95": 14.114564,
+        "p99": 14.114564,
+        "max": 14.114564
+      },
+      "control_closed_loop_ms": {
+        "count": 6,
+        "mean": 116.53884966666665,
+        "p50": 102.722954,
+        "p95": 183.060272,
+        "p99": 183.060272,
+        "max": 183.060272
+      },
+      "physics_advance_ms": {
+        "count": 6,
+        "mean": 1331.4421366666668,
+        "p50": 1416.07153,
+        "p95": 1460.169242,
+        "p99": 1460.169242,
+        "max": 1460.169242
+      },
+      "coordinator_ms": {
+        "count": 6,
+        "mean": 1.425034666666667,
+        "p50": 1.01897,
+        "p95": 3.155945,
+        "p99": 3.155945,
+        "max": 3.155945
+      },
+      "decision_barrier_ms": {
+        "count": 6,
+        "mean": 72.00049716666666,
+        "p50": 59.303413,
+        "p95": 134.814798,
+        "p99": 134.814798,
+        "max": 134.814798
+      },
+      "control_to_next_observation_ms": {
+        "count": 6,
+        "mean": 2465.7333266666665,
+        "p50": 2124.260448,
+        "p95": 4817.107507,
+        "p99": 4817.107507,
+        "max": 4817.107507
+      },
+      "simulation_ms": {
+        "count": 6,
+        "mean": 1331.4421366666668,
+        "p50": 1416.07153,
+        "p95": 1460.169242,
+        "p99": 1460.169242,
+        "max": 1460.169242
+      },
+      "cycle_ms": {
+        "count": 6,
+        "mean": 2465.7356321666666,
+        "p50": 2124.264084,
+        "p95": 4817.110587,
+        "p99": 4817.110587,
+        "max": 4817.110587
+      },
+      "local_inference_ms": {
+        "count": 66,
+        "mean": 1.1808770909090913,
+        "p50": 1.199264,
+        "p95": 1.984435,
+        "p99": 2.048489,
+        "max": 4.217116
+      },
+      "actuator_readback_ms": {
+        "count": 150,
+        "mean": 0.2759031933333335,
+        "p50": 0.224251,
+        "p95": 0.505205,
+        "p99": 0.741218,
+        "max": 0.815995
+      }
+    },
+    "grafana_probe_failures": [],
+    "resource_peaks": {
+      "application": {
+        "memory_mib": 6757.83203125,
+        "rss_mib": 6757.83203125,
+        "uss_mib": 3896.125,
+        "cpu_percent": 2844.4069803015977,
+        "cpu_cores": 28.444069803015978
+      },
+      "fiware": {
+        "memory_mib": 6929.710999999998,
+        "rss_mib": null,
+        "uss_mib": null,
+        "cpu_percent": 53.44999999999998,
+        "cpu_cores": 0.5344999999999999
+      }
+    },
+    "resource_sample_count": 77,
+    "control_transport": {
+      "logical_events": 275,
+      "publication_attempts": 275,
+      "encoded_http_body_bytes": 585273,
+      "note": "HTTP JSON body bytes include retries, but exclude HTTP headers, TCP/IP and responses."
+    },
+    "resource_totals": {
+      "application": {
+        "sampled_cpu_seconds": 32.21000000000001,
+        "sampled_wall_seconds": 20.339787098,
+        "read_bytes": 12288.0,
+        "write_bytes": 9994240.0
+      },
+      "fiware": {
+        "sampled_cpu_seconds": 6.157826832061798,
+        "sampled_wall_seconds": 16.697944174,
+        "network_rx_bytes": 9882400.0,
+        "network_tx_bytes": 11135630.0,
+        "block_read_bytes": 290090.0,
+        "block_write_bytes": 12033000.0
+      }
+    },
+    "accounted_cpu_seconds": 38.36782683206181,
+    "coverage": [
+      {
+        "plot": "Process roles",
+        "reason": "Some captured PIDs have no role metadata; grouped as runtime support, never guessed to be agents"
+      },
+      {
+        "plot": "Policy CPU",
+        "reason": "CPU-per-decision instrumentation was absent; wall time is still available"
+      }
+    ]
+  }
+]

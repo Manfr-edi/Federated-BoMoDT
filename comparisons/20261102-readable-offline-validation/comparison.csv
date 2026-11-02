@@ -1,0 +1,4 @@
+measurement,unit,monolithic,federated,federated_minus_monolithic,federated_over_monolithic
+Application + SUMO CPU,CPU seconds,11.16999999999999,27.370000000000005,16.200000000000017,2.4503133393017036
+Application + SUMO memory peak,MiB (USS),797.84765625,3818.37890625,3020.53125,4.785849624722765
+Complete run duration,Wall-clock seconds,19.145056759,18.67601562099935,-0.46904113800064806,0.9755006661037892

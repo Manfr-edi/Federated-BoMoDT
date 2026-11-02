@@ -1,0 +1,50 @@
+{
+  "200_weekdays_8_17": {
+    "local_controller": {
+      "path": "models/200_weekdays_8_17/local_controller_best.pt",
+      "sha256": "1cac011be8a2451f30b7ec769584fe2ac89afcb546574f69f6593087c2d42cf3",
+      "source": "rl_module/saved_trainings/200_weekdays_8_17/local_controller/local_controller_best.pt"
+    },
+    "coordinated_controller": {
+      "path": "models/200_weekdays_8_17/coordinated_controller_best.pt",
+      "sha256": "da7bc6b2ba042bbe3247c2ac1602c39b448b490d4871d7bc9b928718200befaf",
+      "source": "rl_module/saved_trainings/200_weekdays_8_17/coordinated_controller/coordinated_controller_best.pt"
+    }
+  },
+  "200_weekdays_10_11": {
+    "local_controller": {
+      "path": "models/200_weekdays_10_11/local_controller_best.pt",
+      "sha256": "6511d51bd5ad160fcb86b7bc0141f7fb1db828d4181f1523e07fce9be0747fe0",
+      "source": "rl_module/saved_trainings/200_weekdays_10_11/checkpoints/local_controller/local_controller_best.pt"
+    },
+    "coordinated_controller": {
+      "path": "models/200_weekdays_10_11/coordinated_controller_best.pt",
+      "sha256": "74cdc46d4e45d5b7aeade0173c8ddeac7feeed761846fb3a08ab35aceed94b1b",
+      "source": "rl_module/saved_trainings/200_weekdays_10_11/checkpoints/coordinated_controller/coordinated_controller_best.pt"
+    }
+  },
+  "200_weekends_9_20": {
+    "local_controller": {
+      "path": "models/200_weekends_9_20/local_controller_best.pt",
+      "sha256": "057185459f105a3e78096ae55c58f77c56a46add8e8afbba03d798a79c3d4249",
+      "source": "rl_module/saved_trainings/200_weekends_9_20/checkpoints/local_controller/local_controller_best.pt"
+    },
+    "coordinated_controller": {
+      "path": "models/200_weekends_9_20/coordinated_controller_best.pt",
+      "sha256": "bbe8a628006b48ed39e46f6a66792c29ed4209c778ac59f728c5028dcea35a89",
+      "source": "rl_module/saved_trainings/200_weekends_9_20/checkpoints/coordinated_controller/coordinated_controller_best.pt"
+    }
+  },
+  "200_weekends_12_19": {
+    "local_controller": {
+      "path": "models/200_weekends_12_19/local_controller_best.pt",
+      "sha256": "c0545d3fdfbf2479a7cd7eb90f9446795dae0922cb0f3a2bfbdc1f7be7d725dc",
+      "source": "rl_module/saved_trainings/200_weekends_12_19/checkpoints/local_controller/local_controller_best.pt"
+    },
+    "coordinated_controller": {
+      "path": "models/200_weekends_12_19/coordinated_controller_best.pt",
+      "sha256": "ff1bcb41a409b7e0dd4411d5b42aaa66d6eba8949a4c1a81cf95ea8e5d5e3912",
+      "source": "rl_module/saved_trainings/200_weekends_12_19/checkpoints/coordinated_controller/coordinated_controller_best.pt"
+    }
+  }
+}

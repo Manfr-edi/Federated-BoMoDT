@@ -1,0 +1,9 @@
+{
+  "orion": "quay.io/fiware/orion-ld:1.5.1",
+  "mongo": "mongo:4.4",
+  "iot": "quay.io/fiware/iotagent-json:3.1.0",
+  "quantumleap": "orchestracities/quantumleap:1.0.0",
+  "timescale": "timescale/timescaledb-postgis:latest-pg13",
+  "redis": "redis:6",
+  "grafana": "grafana/grafana:8.5.27"
+}

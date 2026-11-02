@@ -1,0 +1,13 @@
+Matched run comparison
+======================
+
+monolithic: 20261102-agent-cpu-mono-validation
+federated: 20261102-agent-cpu-fed-validation
+
+Same scenario hashes/controller/integration settings validated.
+CPU seconds measure work; CPU cores measure parallel utilization. No 0-100% machine normalization is guessed.
+Grafana ends at a datasource response, not browser rendering.
+Persistence starts at the first historical readback, not the exact DB commit.
+Initial observations may include startup delays. Timing intervals overlap and must not be added.
+Missing metrics are listed in coverage.csv and omitted from presentation plots.
+One matched pair is descriptive evidence, not a statistical architecture ranking.

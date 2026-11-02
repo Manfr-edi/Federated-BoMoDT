@@ -1,0 +1,306 @@
+[
+  {
+    "mode": "monolithic",
+    "kind": "simulation",
+    "run": "20261102-agent-cpu-mono-validation",
+    "status": "completed",
+    "control": "coordinated",
+    "profile": "200_weekdays_8_17",
+    "completed_cycles": 6,
+    "seed": 42,
+    "simulated_end_seconds": 3600.0,
+    "gui": false,
+    "gui_delay": 0,
+    "replicas": false,
+    "integrated": false,
+    "control_protocol_version": 0,
+    "grafana_probe": null,
+    "fiware_tenant": null,
+    "step_seconds": 600,
+    "source_start": null,
+    "operation_wall_seconds": 19.145056759,
+    "pacing": null,
+    "scenario": "/home/manfr/PycharmProjects/BoMoDT-Federated/scenarios/20261102-151158-monolithic-bc6f83",
+    "source_periods": [],
+    "source_sha256": null,
+    "network_sha256": "7227c51be1423d9f858256a020290f8887b4d32fafb1e7e34f3b79321d137964",
+    "network_hash_source": "captured simulation network",
+    "routes_sha256": "38d611e42fd04ec4945593c372b2a1c499e862dde80e76051ff2547d40895643",
+    "collector_errors": [],
+    "dashboard_included": false,
+    "notes": [
+      "Application RSS and container memory are separate scopes; do not add them blindly.",
+      "Plots use CPU cores (1 = one fully occupied logical CPU). Raw cpu_percent retains the 100%-per-core convention; sampled estimates can miss short processes.",
+      "Source playback time is included in pacing lateness, not in IoT HTTP latency.",
+      "Plot generation is performed after resource capture.",
+      "FIWARE publish-to-read timings include HTTP, broker processing and polling, not pure network propagation.",
+      "Docker network totals count container interfaces, including both endpoints of internal transfers.",
+      "Whole-operation process capture includes startup, provisioning, physics, control and teardown when available.",
+      "Accounted CPU sums disjoint application/container scopes; Docker daemon, kernel and unrelated processes are excluded. Container CPU seconds are sampled estimates."
+    ],
+    "latency_ms": {
+      "coordinator_ms": {
+        "count": 6,
+        "mean": 1.3113409999999999,
+        "p50": 1.073914,
+        "p95": 1.838411,
+        "p99": 1.838411,
+        "max": 1.838411
+      },
+      "decision_barrier_ms": {
+        "count": 6,
+        "mean": 14.030055333333332,
+        "p50": 11.810886,
+        "p95": 18.19191,
+        "p99": 18.19191,
+        "max": 18.19191
+      },
+      "control_to_next_observation_ms": {
+        "count": 6,
+        "mean": 2504.628181833333,
+        "p50": 1999.222018,
+        "p95": 5044.940537,
+        "p99": 5044.940537,
+        "max": 5044.940537
+      },
+      "simulation_ms": {
+        "count": 6,
+        "mean": 2483.2278938333334,
+        "p50": 1975.369039,
+        "p95": 5026.992175,
+        "p99": 5026.992175,
+        "max": 5026.992175
+      },
+      "cycle_ms": {
+        "count": 6,
+        "mean": 2504.6323645,
+        "p50": 1999.224256,
+        "p95": 5044.942842,
+        "p99": 5044.942842,
+        "max": 5044.942842
+      },
+      "local_inference_ms": {
+        "count": 66,
+        "mean": 0.44219192424242426,
+        "p50": 0.320377,
+        "p95": 0.995688,
+        "p99": 1.067102,
+        "max": 1.069721
+      },
+      "actuator_readback_ms": {
+        "count": 150,
+        "mean": 0.36154682000000005,
+        "p50": 0.3381,
+        "p95": 0.654774,
+        "p99": 1.557012,
+        "max": 1.584108
+      }
+    },
+    "grafana_probe_failures": [],
+    "resource_peaks": {
+      "application": {
+        "memory_mib": 879.01953125,
+        "rss_mib": 879.01953125,
+        "uss_mib": 797.84765625,
+        "cpu_percent": 831.0576141243489,
+        "cpu_cores": 8.310576141243489
+      },
+      "fiware": {
+        "memory_mib": null,
+        "rss_mib": null,
+        "uss_mib": null,
+        "cpu_percent": null,
+        "cpu_cores": null
+      }
+    },
+    "resource_sample_count": 72,
+    "control_transport": null,
+    "resource_totals": {
+      "application": {
+        "sampled_cpu_seconds": 11.16999999999999,
+        "sampled_wall_seconds": 18.923712,
+        "read_bytes": 0,
+        "write_bytes": 7405568.0
+      },
+      "fiware": {
+        "sampled_cpu_seconds": null,
+        "sampled_wall_seconds": null,
+        "network_rx_bytes": null,
+        "network_tx_bytes": null,
+        "block_read_bytes": null,
+        "block_write_bytes": null
+      }
+    },
+    "accounted_cpu_seconds": null,
+    "coverage": [
+      {
+        "plot": "Snapshot \u2192 Grafana query",
+        "reason": "Not recorded in this run; no historical reconstruction is possible"
+      },
+      {
+        "plot": "Persistence confirmed \u2192 SUMO action",
+        "reason": "Not recorded in this run; no historical reconstruction is possible"
+      },
+      {
+        "plot": "Process roles",
+        "reason": "Some captured PIDs have no role metadata; grouped as runtime support, never guessed to be agents"
+      },
+      {
+        "plot": "iot-agent-footprint",
+        "reason": "No container samples"
+      }
+    ]
+  },
+  {
+    "mode": "federated",
+    "kind": "simulation",
+    "run": "20261102-agent-cpu-fed-validation",
+    "status": "completed",
+    "control": "coordinated",
+    "profile": "200_weekdays_8_17",
+    "completed_cycles": 6,
+    "seed": 42,
+    "simulated_end_seconds": 3600.0,
+    "gui": false,
+    "gui_delay": 0,
+    "replicas": false,
+    "integrated": false,
+    "control_protocol_version": 0,
+    "grafana_probe": null,
+    "fiware_tenant": null,
+    "step_seconds": 600,
+    "source_start": null,
+    "operation_wall_seconds": 18.67601562099935,
+    "pacing": null,
+    "scenario": "/home/manfr/PycharmProjects/BoMoDT-Federated/scenarios/20261102-151158-monolithic-bc6f83",
+    "source_periods": [],
+    "source_sha256": null,
+    "network_sha256": "7227c51be1423d9f858256a020290f8887b4d32fafb1e7e34f3b79321d137964",
+    "network_hash_source": "captured simulation network",
+    "routes_sha256": "38d611e42fd04ec4945593c372b2a1c499e862dde80e76051ff2547d40895643",
+    "collector_errors": [],
+    "dashboard_included": false,
+    "notes": [
+      "Application RSS and container memory are separate scopes; do not add them blindly.",
+      "Plots use CPU cores (1 = one fully occupied logical CPU). Raw cpu_percent retains the 100%-per-core convention; sampled estimates can miss short processes.",
+      "Source playback time is included in pacing lateness, not in IoT HTTP latency.",
+      "Plot generation is performed after resource capture.",
+      "FIWARE publish-to-read timings include HTTP, broker processing and polling, not pure network propagation.",
+      "Docker network totals count container interfaces, including both endpoints of internal transfers.",
+      "Whole-operation process capture includes startup, provisioning, physics, control and teardown when available.",
+      "Accounted CPU sums disjoint application/container scopes; Docker daemon, kernel and unrelated processes are excluded. Container CPU seconds are sampled estimates."
+    ],
+    "latency_ms": {
+      "coordinator_ms": {
+        "count": 6,
+        "mean": 1.2812491666666666,
+        "p50": 1.338865,
+        "p95": 1.606342,
+        "p99": 1.606342,
+        "max": 1.606342
+      },
+      "decision_barrier_ms": {
+        "count": 6,
+        "mean": 5.556343166666667,
+        "p50": 4.448999,
+        "p95": 11.874273,
+        "p99": 11.874273,
+        "max": 11.874273
+      },
+      "control_to_next_observation_ms": {
+        "count": 6,
+        "mean": 2186.5705138333333,
+        "p50": 1843.877584,
+        "p95": 4511.930154,
+        "p99": 4511.930154,
+        "max": 4511.930154
+      },
+      "simulation_ms": {
+        "count": 6,
+        "mean": 2173.009241,
+        "p50": 1835.440203,
+        "p95": 4497.654524,
+        "p99": 4497.654524,
+        "max": 4497.654524
+      },
+      "cycle_ms": {
+        "count": 6,
+        "mean": 2186.5740631666667,
+        "p50": 1843.880232,
+        "p95": 4511.93308,
+        "p99": 4511.93308,
+        "max": 4511.93308
+      },
+      "local_inference_ms": {
+        "count": 66,
+        "mean": 1.1449807424242424,
+        "p50": 1.137722,
+        "p95": 1.542015,
+        "p99": 1.561237,
+        "max": 1.669599
+      },
+      "actuator_readback_ms": {
+        "count": 150,
+        "mean": 0.30620388000000004,
+        "p50": 0.22289,
+        "p95": 0.489515,
+        "p99": 1.08647,
+        "max": 1.25913
+      }
+    },
+    "grafana_probe_failures": [],
+    "resource_peaks": {
+      "application": {
+        "memory_mib": 6663.25,
+        "rss_mib": 6663.25,
+        "uss_mib": 3818.37890625,
+        "cpu_percent": 2186.215975542389,
+        "cpu_cores": 21.86215975542389
+      },
+      "fiware": {
+        "memory_mib": null,
+        "rss_mib": null,
+        "uss_mib": null,
+        "cpu_percent": null,
+        "cpu_cores": null
+      }
+    },
+    "resource_sample_count": 64,
+    "control_transport": null,
+    "resource_totals": {
+      "application": {
+        "sampled_cpu_seconds": 27.370000000000005,
+        "sampled_wall_seconds": 18.522838642,
+        "read_bytes": 4096.0,
+        "write_bytes": 9469952.0
+      },
+      "fiware": {
+        "sampled_cpu_seconds": null,
+        "sampled_wall_seconds": null,
+        "network_rx_bytes": null,
+        "network_tx_bytes": null,
+        "block_read_bytes": null,
+        "block_write_bytes": null
+      }
+    },
+    "accounted_cpu_seconds": null,
+    "coverage": [
+      {
+        "plot": "Snapshot \u2192 Grafana query",
+        "reason": "Not recorded in this run; no historical reconstruction is possible"
+      },
+      {
+        "plot": "Persistence confirmed \u2192 SUMO action",
+        "reason": "Not recorded in this run; no historical reconstruction is possible"
+      },
+      {
+        "plot": "Process roles",
+        "reason": "Some captured PIDs have no role metadata; grouped as runtime support, never guessed to be agents"
+      },
+      {
+        "plot": "iot-agent-footprint",
+        "reason": "No container samples"
+      }
+    ]
+  }
+]

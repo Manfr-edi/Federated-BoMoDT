@@ -1,0 +1,212 @@
+"""Central configuration for the RL package.
+
+The goal is to keep experiment choices out of the training loops. Training
+scripts import immutable settings from here, while output paths are derived from
+the architecture name so local-only and coordinated runs never overwrite each
+other.
+"""
+
+from __future__ import annotations
+
+import os
+from dataclasses import dataclass, field
+from datetime import datetime
+
+from libraries.constants import SUMO_PATH
+
+
+PACKAGE_DIR = os.path.dirname(os.path.abspath(__file__))
+TAZ_RL_DIR = os.path.dirname(PACKAGE_DIR)
+
+
+@dataclass(frozen=True)
+class ExperimentSettings:
+    """Episode count, output names, and reproducibility settings for training."""
+
+    name: str = "coordinated_controller"
+    start_date: datetime = datetime(2025, 1, 1)
+    # This is the target number of training episodes, not a calendar-day window.
+    train_days: int = 200
+    focus_hours: tuple[int, ...] = (8, 17)
+    # focus_hours: tuple[int, ...] = (7, 8)
+    # Supported values: all, weekdays, weekends, or explicit weekdays like "mon-wed-sat".
+    day_filter: str = "weekdays"
+    # day_filter: str = "mon-wed-sat"
+    train_on_same_day: bool = False
+    shuffle_episode_schedule: bool = True
+    global_seed: int = 42
+    selected_taz_id: str | None = None
+
+    @property
+    def checkpoint_dir(self) -> str:
+        # Every architecture gets an isolated checkpoint folder.
+        return os.path.join(PACKAGE_DIR, "checkpoints", self.name)
+
+    @property
+    def detail_dir(self) -> str:
+        # Episode-level JSON diagnostics are separated from compact histories.
+        return os.path.join(PACKAGE_DIR, "details", self.name)
+
+    @property
+    def history_csv_path(self) -> str:
+        return os.path.join(PACKAGE_DIR, "history", f"{self.name}.csv")
+
+    @property
+    def history_json_path(self) -> str:
+        return os.path.join(PACKAGE_DIR, "history", f"{self.name}.json")
+
+
+@dataclass(frozen=True)
+class DemandSettings:
+    """Demand profile and deterministic randomization rules."""
+
+    base_demand: int = 1000
+    hourly_profile: dict[int, float] = field(default_factory=lambda: {
+        0: 0.2, 1: 0.15, 2: 0.1, 3: 0.1, 4: 0.2,
+        5: 0.4, 6: 0.7, 7: 1.2, 8: 1.5,
+        9: 1.0, 10: 0.8, 11: 0.9,
+        12: 1.1, 13: 1.0, 14: 0.9, 15: 1.0,
+        16: 1.3, 17: 1.6, 18: 1.4, 19: 1.0,
+        20: 0.8, 21: 0.6, 22: 0.4, 23: 0.3,
+    })
+    # Weekend days keep their own configurable demand scale. The hourly profile
+    # can also be overridden when Saturday/Sunday should have shifted peaks.
+    weekend_demand_factor: float = 0.75
+    weekend_hourly_profile: dict[int, float] | None = field(default_factory=lambda: {
+        0: 0.6, 1: 0.4, 2: 0.25, 3: 0.15, 4: 0.15,
+        5: 0.15, 6: 0.25, 7: 0.45, 8: 0.65,
+        9: 0.90, 10: 1.1, 11: 1.20,
+        12: 1.3, 13: 1.1, 14: 0.95, 15: 1.05,
+        16: 1.15, 17: 1.2, 18: 1.2, 19: 1.25,
+        20: 1.1, 21: 0.75, 22: 0.65, 23: 0.65,
+    })
+    # Randomness is reproducible: values are sampled from global_seed and episode metadata.
+    demand_noise_range: tuple[float, float] = (0.85, 1.15)
+    route_cache_root: str = os.path.join(SUMO_PATH, "routes_rl_module_randomized")
+    reuse_cached_routes: bool = True
+    random_trip_seed: int = 42
+    route_sampler_seed: int = 42
+    route_sampler_threads: int = 1
+    # Vary route generation while keeping the run deterministic from global_seed
+    # and episode metadata.
+    vary_route_seeds_by_episode: bool = True
+
+
+@dataclass(frozen=True)
+class EnvironmentSettings:
+    """SUMO environment reward and normalization constants."""
+
+    speed_norm: float = 10.0
+    jam_norm: float = 10.0
+    warmupSteps: int = 0
+    cooldownSteps: int = 12
+    min_green: int = 20
+    max_green: int = 90
+    metric_clip: float = 4.0
+    reward_clip: float = 4.0
+    dense_abs_penalty_weight: float = 1.0
+    dense_delta_reward_weight: float = 0.15
+    terminal_bonus_weight: float = 1.0
+    comparison_reward_enabled: bool = True
+    waiting_reward_weight: float = 0.0
+    emission_reward_weight: float = 1.0
+    jam_reward_weight: float = 0.0
+    emission_co2_mix_weight: float = 0.50
+    emission_nox_mix_weight: float = 0.50
+    tls_waiting_time_ref: float = 1000.0
+    tls_co2_ref: float = 80000.0
+    tls_nox_ref: float = 40.0
+    tls_active_vehicle_ref: float = 80.0
+    taz_waiting_time_ref: float = 6000.0
+    taz_co2_ref: float = 300000.0
+    taz_nox_ref: float = 150.0
+    terminal_waiting_time_ref: float = 500000.0
+    terminal_co2_ref: float = 5000000000.0
+    terminal_nox_ref: float = 1800000.0
+    tls_veh_total_ref: float = 120.0
+    tls_pressure_ref: float = 10000.0
+    taz_veh_total_ref: float = 2500.0
+    taz_std_occupancy_ref: float = 0.25
+    max_jam_len_ref: float = 120.0
+    waiting_time_memory: int = 3600
+    action_signal_threshold: float = 0.03
+    sumo_thread_rngs: int = 1
+    coordination_distance: float = 350.0
+    coordination_path_length: float = 900.0
+    coordination_group_max_size: int = 3
+    group_axis_align_only: bool = True
+
+    def to_env_kwargs(self, sumo_seed: int) -> dict:
+        # The SUMO environment expects keyword arguments, not a dataclass object.
+        data = dict(self.__dict__)
+        data["sumo_seed"] = int(sumo_seed)
+        return data
+
+
+@dataclass(frozen=True)
+class LocalControllerSettings:
+    """PPO settings for the traffic-light controller."""
+
+    action_bins: tuple[float, ...] = (-10.0, 0.0, 10.0)
+    gamma: float = 0.99
+    gae_lambda: float = 0.95
+    learning_rate: float = 1e-4
+    lr_scheduler_factor: float = 0.8
+    lr_scheduler_patience: int = 40
+    lr_scheduler_threshold: float = 0.002
+    min_learning_rate: float = 5e-5
+    clip_ratio: float = 0.12
+    entropy_coef: float = 0.008
+    entropy_coef_final: float = 0.001
+    entropy_warmup_ratio: float = 0.25
+    value_coef: float = 0.5
+    max_grad_norm: float = 0.5
+    target_kl: float = 0.015
+    ppo_epochs: int = 4
+    minibatch_size: int = 64
+    load_pretrained: bool = True
+    pretrained_checkpoint_path: str = os.path.join(PACKAGE_DIR, "checkpoints", "local_controller", "local_controller_best.pt")
+    # pretrained_checkpoint_path: str = os.path.join(PACKAGE_DIR, "saved_trainings", "weekends_7_8", "checkpoints", "local_controller", "local_controller_best.pt")
+    # In the coordinated stage the pretrained local policy should remain the
+    # behavioral reference. The coordinator learns through a small price adapter.
+    train_local_policy: bool = False
+    train_price_adapter: bool = True
+
+
+@dataclass(frozen=True)
+class CoordinatorSettings:
+    """PPO and coordination settings for the global TAZ coordinator."""
+
+    price_bins: tuple[float, ...] = (0.0, 0.5, 1.0, 1.5, 2.0)
+    local_price_context_dim: int = 3
+    taz_adjacency_distance_threshold: float = 80.0
+    taz_adjacency_fallback_k: int = 3
+    learning_rate: float = 1e-4
+    clip_ratio: float = 0.10
+    entropy_coef: float = 0.010
+    entropy_coef_final: float = 0.002
+    value_coef: float = 0.5
+    target_kl: float = 0.015
+    ppo_epochs: int = 4
+    minibatch_size: int = 32
+    gamma: float = 0.99
+    gae_lambda: float = 0.95
+    coordination_reference_mode: str = "local_only"
+    # The local-reference terminal penalty is a training target, not information
+    # available to an online controller before it acts.
+    include_reference_penalty_context: bool = False
+    price_adapter_hidden_dim: int = 64
+    price_adapter_scale: float = 1.0
+    price_adapter_mode: str = "zero_anchored_v2"
+    normalize_entropy_and_kl_by_taz: bool = True
+    # A route-dependent one-episode reward is not a reliable LR scheduler
+    # signal. Keep the coordinator LR constant unless a validation scheduler is
+    # introduced explicitly.
+    use_lr_scheduler: bool = False
+
+
+EXPERIMENT = ExperimentSettings()
+DEMAND = DemandSettings()
+ENVIRONMENT = EnvironmentSettings()
+LOCAL_CONTROLLER = LocalControllerSettings()
+COORDINATOR = CoordinatorSettings()

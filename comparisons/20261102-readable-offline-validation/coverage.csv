@@ -1,0 +1,6 @@
+measurement,reason
+FIWARE CPU,Not recorded in both runs; omitted from plots
+FIWARE memory peak,Not recorded in both runs; omitted from plots
+Snapshot → Grafana query response,"No agents, historical instrumentation or missing responses; omitted"
+Persistence confirmation → SUMO action,"No agents, historical instrumentation or missing responses; omitted"
+Complete control loop (without physics),"No agents, historical instrumentation or missing responses; omitted"

@@ -1,0 +1,18 @@
+# Reference interpreter: Python 3.11 (see .python-version).
+# This file is also the dependency source for pyproject.toml.
+# Dependency declarations, not a fully validated/frozen environment lock.
+# SUMO and Docker Compose must be installed separately.
+
+numpy
+pandas
+torch
+torchrl
+tensordict
+libtraci
+traci
+sumolib
+scipy
+psutil
+streamlit>=1.51,<2
+psycopg[binary]>=3.1,<4
+matplotlib>=3.7,<4
